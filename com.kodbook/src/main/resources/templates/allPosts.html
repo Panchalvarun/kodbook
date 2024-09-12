@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+          <h2>All Posts</h2>
+          
+          <span th:each="post:${postList}"></span>
+          <h4>Post id:</h4>
+           <span th:text="${post.id}"></span>
+           <h4>photo:</h4>
+          
+             <h4>caption:</h4>
+          <span th:text="${post.caption}"></span>
+           
+          
+       
+</body>
+</html>
