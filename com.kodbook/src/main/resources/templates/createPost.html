@@ -1,8 +1,100 @@
-<!DOCTYPE html>
+
+.<!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style>
+    /* Styling the entire post container */
+.post {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Title styling */
+.post h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form textarea for the caption */
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    box-sizing: border-box;
+    background-color: #fff;
+    transition: border-color 0.3s ease-in-out;
+}
+
+/* Focused textarea */
+textarea:focus {
+    border-color: #3b5998;
+    outline: none;
+}
+
+/* File input field */
+input[type="file"] {
+    font-size: 16px;
+    padding: 8px;
+    margin-top: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* Labels styling */
+label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Submit button */
+button {
+    background-color: #3b5998;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    width: 100%;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #2d4373;
+}
+
+/* Adjusting spacing for elements */
+textarea, input[type="file"], button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Form spacing */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+</style>
 </head>
 <body>
      
@@ -11,15 +103,11 @@
      <div class="post">
       <h1>Create Post</h1>
       <form id="profileForm" action="/createPost" method="post" enctype="multipart/form-data">
+        <label>Caption</label>
         <textarea name="caption" placeholder="caption" required >
         </textarea>
-        <br>
-        <br>
         <label>Add image:</label>
-        <input type="file" name="photo" accept="image/*" />
-        <br><br>
-        <label>Caption</label>
-        <br><br>
+        <input type="file" name="photo" accept="image/*"  required>
         <button type="submit">POST</button>
     </form>
      
