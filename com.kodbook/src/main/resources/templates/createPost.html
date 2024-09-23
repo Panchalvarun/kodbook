@@ -1,117 +1,142 @@
-
-.<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<style>
-    /* Styling the entire post container */
-.post {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    font-family: 'Arial', sans-serif;
-}
-
-/* Title styling */
-.post h1 {
-    text-align: center;
-    font-size: 32px;
-    margin-bottom: 20px;
+    <meta charset="UTF-8">
+    <title>New Post</title>
+    <style type="text/css">
+    
+    /* General Styling */
+/* General page styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FAFAFA;
     color: #333;
-}
-
-/* Form textarea for the caption */
-textarea {
-    width: 100%;
-    height: 150px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: none;
-    box-sizing: border-box;
-    background-color: #fff;
-    transition: border-color 0.3s ease-in-out;
-}
-
-/* Focused textarea */
-textarea:focus {
-    border-color: #3b5998;
-    outline: none;
-}
-
-/* File input field */
-input[type="file"] {
-    font-size: 16px;
-    padding: 8px;
-    margin-top: 10px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
-}
-
-/* Labels styling */
-label {
-    font-weight: bold;
-    color: #333;
-    display: block;
-    margin-bottom: 5px;
-}
-
-/* Submit button */
-button {
-    background-color: #3b5998;
-    color: white;
-    border: none;
-    padding: 10px;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-    width: 100%;
-    margin-top: 20px;
-}
-
-button:hover {
-    background-color: #2d4373;
-}
-
-/* Adjusting spacing for elements */
-textarea, input[type="file"], button {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-/* Form spacing */
-form {
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    align-items: center;
 }
 
-</style>
+/* Navigation bar */
+nav {
+    background-color: white;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav a {
+    color: #262626;
+    font-size: 1.2em;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+nav a i {
+    margin-right: 8px;
+}
+
+nav a:hover {
+    color: #0095f6;
+}
+
+/* Heading */
+h2 {
+    color: #262626;
+    margin: 20px;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+/* Profile creation form */
+#profileForm {
+    background-color: white;
+    border: 1px solid #dbdbdb;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+#profileForm textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #dbdbdb;
+    resize: none;
+    font-size: 1em;
+}
+
+#profileForm input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    font-size: 1em;
+}
+
+#profileForm button {
+    background-color: #0095f6;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+#profileForm button:hover {
+    background-color: #007cc9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #profileForm {
+        width: 90%;
+    }
+
+    nav {
+        justify-content: space-between;
+    }
+    
+}
+
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
 </head>
 <body>
-     
-     
-     
-     <div class="post">
-      <h1>Create Post</h1>
-      <form id="profileForm" action="/createPost" method="post" enctype="multipart/form-data">
-        <label>Caption</label>
-        <textarea name="caption" placeholder="caption" required >
-        </textarea>
-        <label>Add image:</label>
-        <input type="file" name="photo" accept="image/*"  required>
-        <button type="submit">POST</button>
-    </form>
-     
-     </div>
+    <!-- Navigation bar -->
+    <nav>
+    <a href="/goHome"><i class="fas fa-home"></i> Home</a>
+    <a href="/openCreatePost"><i class="fas fa-plus-square"></i> Create post</a>
+    <a href="/openMyProfile"><i class="fas fa-user"></i> My profile</a>
+</nav>
+
+<h2>Profile Creation</h2>
+
+<form id="profileForm" action="/createPost" method="post" enctype="multipart/form-data">
+    <textarea name="caption" placeholder="Write your caption here..." required></textarea>
+    <br><br>
+    <input type="file" name="photo" accept="image/*" />
+    <br><br>
+    <button type="submit">POST</button>
+</form>
 
 </body>
 </html>
